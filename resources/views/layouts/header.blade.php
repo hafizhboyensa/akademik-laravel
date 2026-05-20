@@ -15,6 +15,9 @@
                     <li class="nav-item">
                         <a class="nav-link px-3" href="/mahasiswa">Mahasiswa</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="/dosen">Dosen</a>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <div class="input-group">

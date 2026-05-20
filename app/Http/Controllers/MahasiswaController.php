@@ -15,7 +15,7 @@ class MahasiswaController extends Controller
     {
         $mahasiswa=Mahasiswa::latest()->paginate(10);
         
-        return view('akademik.mahasiswa',[
+        return view('mahasiswa.mahasiswa',[
             'data_mahasiswa'=>$mahasiswa
         ]);
     }
@@ -26,7 +26,7 @@ class MahasiswaController extends Controller
     public function create()
     {
         Mahasiswa::get();
-        return view('akademik.add');
+        return view('mahasiswa.add');
     }
 
     /**
@@ -35,18 +35,22 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim'=>'required',
-            'nama_lengkap'=>'required',
-            'email'=>'required',
-            'tempat_lahir'=>'required',
-            'tanggal_lahir'=>'required',
+            'nim'=>'required|numeric',
+            'nama_lengkap'=>'required|string',
+            'email'=>'required|email',
+            'tempat_lahir'=>'required|string',
+            'tanggal_lahir'=>'required|date',
             'program_studi'=>'required',
             'alamat'=>'required',
         ],[
             'nim.required'=>'nim wajib diisi',
+            'nim.numeric'=>'nim harus berupa angka',
             'nama_lengkap.required'=>'nama lengkap wajib diisi',
+            'nama_lengkap.string'=>'nama harus berupa teks',
             'email.required'=>'email wajib diisi',
+            'email.email'=>'email harus menggunakan @gmail.com',
             'tempat_lahir.required'=>'tempat lahir wajib diisi',
+            'tempat_lahir.string'=>'tempat lahir harus berupa teks',
             'tanggal_lahir.required'=>'tanggal lahir wajib diisi',
             'program_studi.required'=>'program studi wajib diisi',
             'alamat.required'=>'alamat wajib diisi',
@@ -72,7 +76,7 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
         
-        return view('akademik.detail',[
+        return view('mahasiswa.detail',[
             'mahasiswa'=>$mahasiswa
         ]);
     }
@@ -82,10 +86,10 @@ class MahasiswaController extends Controller
      */
     public function edit(string $id)
     {
-            $data = Mahasiswa::findOrFail($id);
-            return view('akademik.edit',[
-                'data'=>$data
-            ]);
+        $data = Mahasiswa::findOrFail($id);
+        return view('mahasiswa.edit',[
+            'data'=>$data
+        ]);
     }
 
     /**
@@ -94,18 +98,22 @@ class MahasiswaController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nim'=>'required',
-            'nama_lengkap'=>'required',
-            'email'=>'required',
-            'tempat_lahir'=>'required',
-            'tanggal_lahir'=>'required',
+            'nim'=>'required|numeric',
+            'nama_lengkap'=>'required|string',
+            'email'=>'required|email',
+            'tempat_lahir'=>'required|string',
+            'tanggal_lahir'=>'required|date',
             'program_studi'=>'required',
             'alamat'=>'required',
         ],[
             'nim.required'=>'nim wajib diisi',
+            'nim.numeric'=>'nim harus berupa angka',
             'nama_lengkap.required'=>'nama lengkap wajib diisi',
+            'nama_lengkap.string'=>'nama harus berupa teks',
             'email.required'=>'email wajib diisi',
+            'email.email'=>'email harus menggunakan @gmail.com',
             'tempat_lahir.required'=>'tempat lahir wajib diisi',
+            'tempat_lahir.string'=>'tempat lahir harus berupa teks',
             'tanggal_lahir.required'=>'tanggal lahir wajib diisi',
             'program_studi.required'=>'program studi wajib diisi',
             'alamat.required'=>'alamat wajib diisi',

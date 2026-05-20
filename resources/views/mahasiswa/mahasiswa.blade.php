@@ -22,7 +22,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Prodi</th>
                     <th width="20%" scope="col">Alamat</th>
-                    <th width="18%" scope="col">Aksi</th>
+                    <th width="25%" scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
